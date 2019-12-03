@@ -1,0 +1,18 @@
+/* 
+  Car.strings
+  GetAround
+
+  Created by JBR on 02/12/2019.
+  Copyright © 2019 Jérémy Brault. All rights reserved.
+*/
+
+"list.title" = "Available cars";
+
+"list.refreshError.title" = "Error";
+"list.refreshError.message" = "Failed to refresh cars list. Please check your internet connexion.";
+
+"pricing.format" = "%@ / day";
+"pricing.unknown" = "Unknown price";
+
+"rating.format" = "%@ (%u reviewers)";
+"rating.none" = "No rating yet";

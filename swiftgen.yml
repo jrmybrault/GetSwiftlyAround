@@ -1,0 +1,33 @@
+input_dir: GetAround/Resources
+
+strings:
+  inputs:
+    - Translations/en.lproj/Car.strings
+    - Translations/en.lproj/Common.strings
+  outputs:
+    templatePath: swiftgen-templates/custom-structured-swift4.stencil
+    output: GetAround/Sources/Generated/Translation.swift
+    params:
+      enumName: Translation
+      publicAccess:
+
+xcassets:
+    inputs:
+        - Assets.xcassets
+        - Colors.xcassets
+    outputs:
+        templateName: swift4
+        output: GetAround/Sources/Generated/Asset.swift
+        params:
+            publicAccess:
+
+plist:
+  inputs: 
+    - Info.plist
+  outputs:
+    - templateName: runtime-swift4
+      output: GetAround/Sources/Generated/Plist.swift
+      params:
+        enumName: Plist
+        publicAccess:
+   
