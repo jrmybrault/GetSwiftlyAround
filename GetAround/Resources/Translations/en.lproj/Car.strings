@@ -11,8 +11,14 @@
 "list.refreshError.title" = "Error";
 "list.refreshError.message" = "Failed to refresh cars list. Please check your internet connexion.";
 
-"pricing.format" = "%@ / day";
+"list.pricing.format" = "%@ / day";
 "pricing.unknown" = "Unknown price";
 
-"rating.format" = "%@ (%u reviewers)";
+"default.rating.format" = " %@ (%u ratings)";
 "rating.none" = "No rating yet";
+
+"details.owner" = "About the owner";
+"details.pricing.format" = "%@\nper day";
+"details.car.rating.format.part1" = "%@ ★";
+"details.car.rating.format.part2" = " out of %d";
+"details.car.rating.format.part3" = "\n%u ratings";

@@ -25,11 +25,15 @@ final class CarsViewInteractor {
         }
     }
 
-    private var cars = [DisplayableCarItem]() {
-        didSet { self.viewState?.cars.value = self.cars }
+    private var cars = [Car]() {
+        didSet {
+            viewState?.cars.value = workQueue.sync { cars.map(DisplayableCarItem.init) }
+        }
     }
 
     private var refreshTask: CancellableTask?
+
+    var onCarSelected: Consumer<Car>?
 
     var workQueue = DispatchQueue.global(qos: .userInitiated)
 
@@ -58,9 +62,13 @@ final class CarsViewInteractor {
             viewState?.shouldDisplayRefreshError.value = true
             viewState?.isRefreshing.value = false
         case let .succeed(cars):
-            viewState?.cars.value = workQueue.sync { cars.map(DisplayableCarItem.init) }
+            self.cars = cars
             viewState?.isRefreshing.value = false
         }
+    }
+
+    private func tearDownProviderObserving() {
+        provider.onLoadingStateChange = nil
     }
 
     func onPullToRefresh() {
@@ -72,7 +80,9 @@ final class CarsViewInteractor {
         refreshTask = provider.refresh()
     }
 
-    private func tearDownProviderObserving() {
-        provider.onLoadingStateChange = nil
+    func onSelectCar(at index: UInt) {
+        let selectedCar = cars[index]
+
+        onCarSelected?(selectedCar)
     }
 }

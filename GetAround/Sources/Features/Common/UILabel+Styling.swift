@@ -9,11 +9,22 @@
 import Foundation
 import UIKitUtils
 
+extension UILabel {
+
+    public func applyStyle(_ style: TextStyle) -> UILabel {
+        font = style.font
+        textColor = style.color
+
+        return self
+    }
+}
+
 public enum TextStyle {
 
-    case normalText
-    case importantText
-    case detailsText
+    case normal
+    case important
+    case veryImportant
+    case details
 
     // MARK: - Properties
 
@@ -21,9 +32,10 @@ public enum TextStyle {
         let font: UIFont
 
         switch self {
-        case .normalText: font = .normalTextFont
-        case .importantText: font = .importantTextFont
-        case .detailsText: font = .detailsTextFont
+        case .normal: font = .preferredFont(forTextStyle: .body)
+        case .important: font = .preferredFont(forTextStyle: .headline)
+        case .veryImportant: font = .preferredFont(forTextStyle: .title1)
+        case .details: font = .preferredFont(forTextStyle: .footnote)
         }
 
         return font
@@ -33,21 +45,12 @@ public enum TextStyle {
         let color: UIColor
 
         switch self {
-        case .normalText: color = .darkGray
-        case .importantText: color = .black
-        case .detailsText: color = .lightGray
+        case .normal: color = .darkGray
+        case .important: color = .black
+        case .veryImportant: color = .black
+        case .details: color = .lightGray
         }
 
         return color
-    }
-}
-
-extension UILabel {
-
-    public func applyStyle(_ style: TextStyle) -> UILabel {
-        font = style.font
-        textColor = style.color
-
-        return self
     }
 }

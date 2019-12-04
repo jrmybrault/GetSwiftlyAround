@@ -14,27 +14,16 @@ struct DisplayableCarItem {
     // MARK: - Properties
 
     let pictureURL: URL?
-
     let displayName: String
-
-    let pricingText: String?
-
-    let ratingPercentage: Float?
-    var shouldShowRatingImage: Bool {
-        return ratingPercentage != nil
-    }
+    let pricingText: String
     let ratingText: NSAttributedString
 
     // MARK: - Init
 
     init(car: Car) {
         self.pictureURL = URL(string: car.pictureUrl)
-
         self.displayName = car.displayName
-
-        self.pricingText = car.pricingText
-
-        self.ratingPercentage = nil
-        self.ratingText = car.ratingText
+        self.pricingText = Translation.Car.List.Pricing.format(car.formattedPrice)
+        self.ratingText = car.rating.formattedText
     }
 }

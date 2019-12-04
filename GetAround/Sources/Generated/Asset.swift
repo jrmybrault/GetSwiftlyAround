@@ -20,6 +20,7 @@
 public enum Asset {
   public enum Assets {
     public static let carPhotoPlaceholder = ImageAsset(name: "carPhotoPlaceholder")
+    public static let ownerPhotoPlaceholder = ImageAsset(name: "ownerPhotoPlaceholder")
   }
   public enum Colors {
     public static let lightSelectionBackground = ColorAsset(name: "lightSelectionBackground")

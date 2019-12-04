@@ -37,21 +37,20 @@ final class CarViewCell: UITableViewCell, Reusable {
         return stackView
     }()
     private let nameLabel: UILabel = {
-        let label = UILabel().applyStyle(.normalText)
+        let label = UILabel().applyStyle(.normal)
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = LayoutConstants.minimumFontScale
         label.setContentHuggingPriority(.required, for: .horizontal)
         return label
     }()
     private let priceLabel: UILabel = {
-        let label = UILabel().applyStyle(.importantText)
+        let label = UILabel().applyStyle(.important)
         label.textAlignment = .right
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }()
     
-    private let ratingImageView = UIImageView()
-    private let ratingLabel = UILabel().applyStyle(.detailsText)
+    private let ratingLabel = UILabel().applyStyle(.details)
     
     private var photoDownloadTask: CancellableTask?
 
@@ -59,8 +58,10 @@ final class CarViewCell: UITableViewCell, Reusable {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        setupSubviews()
+
+        contentView.backgroundColor = Asset.Colors.lightSelectionBackground.color
+
+        setupSubviewsHierarchy()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -73,9 +74,7 @@ final class CarViewCell: UITableViewCell, Reusable {
         cardView.backgroundColor = highlighted ? Asset.Colors.lightSelectionBackground.color : .white
     }
 
-    private func setupSubviews() {
-        contentView.backgroundColor = Asset.Colors.lightSelectionBackground.color
-        
+    private func setupSubviewsHierarchy() {
         cardView.pin(in: self, margin: LayoutConstants.defaultPadding)
 
         photoImageView.pin(in: cardView, .fullTop)
@@ -92,17 +91,16 @@ final class CarViewCell: UITableViewCell, Reusable {
         ratingLabel.putOnBottom(of: nameAndPriceStackView, margin: LayoutConstants.defaultMargin)
     }
     
-    func displayCar(_ car: DisplayableCarItem, photoProvider: CarPhotoProvider) {
+    func displayCar(_ car: DisplayableCarItem, photoProvider: PhotoProvider) {
         displayPhoto(car.pictureURL, photoProvider: photoProvider)
 
         nameLabel.text = car.displayName
         priceLabel.text = car.pricingText
         
-        ratingImageView.setVisibility(car.shouldShowRatingImage)
         ratingLabel.attributedText = car.ratingText
     }
     
-    private func displayPhoto(_ url: URL?, photoProvider: CarPhotoProvider) {
+    private func displayPhoto(_ url: URL?, photoProvider: PhotoProvider) {
         photoDownloadTask?.cancel()
         photoImageView.contentMode = .scaleAspectFit
         photoImageView.image = Asset.Assets.carPhotoPlaceholder.image
@@ -114,7 +112,7 @@ final class CarViewCell: UITableViewCell, Reusable {
         }
     }
     
-    private func onPhotoLoadingStateChanged(_ state: CarPhotoProvider.RefreshState) {
+    private func onPhotoLoadingStateChanged(_ state: PhotoProvider.RefreshState) {
         switch state {
         case .pending: break
         case .error: break

@@ -12,7 +12,7 @@ import Foundation
 
 enum PhotoProviderFactory {
 
-    static func create() -> CarPhotoProvider {
-        return CarPhotoProvider(remoteProvider: GetCarPhotoWebService())
+    static func create() -> PhotoProvider {
+        return PhotoProvider(remoteProvider: GetPhotoWebService())
     }
 }

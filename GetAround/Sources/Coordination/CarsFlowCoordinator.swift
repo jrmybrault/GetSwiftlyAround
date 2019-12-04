@@ -15,11 +15,11 @@ final class CarsFlowCoordinator: Coordinator {
 
     // MARK: - Properties
 
-    private let navigationController = UINavigationController()
-
     var rootViewController: UIViewController {
         return navigationController
     }
+
+    private let navigationController = UINavigationController()
 
     // MARK: - Funcs
 
@@ -30,8 +30,16 @@ final class CarsFlowCoordinator: Coordinator {
     private func displayCarsList() {
         let provider = CarsProvider(remoteProvider: GetCarsWebService())
         let viewInteractor = CarsViewInteractor(provider: provider)
+        viewInteractor.onCarSelected = { [unowned self] car in
+            self.displayDetails(of: car)
+        }
 
         let viewController = CarsViewController.create(interactor: viewInteractor)
+        navigationController.pushViewController(viewController, animated: false)
+    }
+
+    private func displayDetails(of car: Car) {
+        let viewController = CarDetailsViewController.create(state: CarDetailsViewState(car: car))
         navigationController.pushViewController(viewController, animated: false)
     }
 }

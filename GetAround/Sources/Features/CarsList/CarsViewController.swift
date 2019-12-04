@@ -29,8 +29,25 @@ final class CarsViewController: UIViewController {
 
     // MARK: - Properties
 
-    private lazy var tableView = UITableView()
-    private let refreshControl = UIRefreshControl()
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(cellType: CarViewCell.self)
+        tableView.estimatedRowHeight = Constants.estimatedRowHeight
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
+        tableView.refreshControl = refreshControl
+
+        tableView.dataSource = self
+        tableView.delegate = self
+
+        return tableView
+    }()
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(onPullToRefresh), for: .valueChanged)
+        return refreshControl
+    }()
 
     private var state: CarsViewState!
     private var observingTokens = [ObservingToken]()
@@ -41,12 +58,12 @@ final class CarsViewController: UIViewController {
 
     private var interactor: CarsViewInteractor!
 
-    private var photoProvider: CarPhotoProvider!
+    private var photoProvider: PhotoProvider!
 
     // MARK: - Init
 
     static func create(interactor: CarsViewInteractor,
-                       photoProvider: CarPhotoProvider = PhotoProviderFactory.create(),
+                       photoProvider: PhotoProvider = PhotoProviderFactory.create(),
                        state: CarsViewState = CarsViewState()) -> CarsViewController {
         let viewController = CarsViewController()
         viewController.interactor = interactor
@@ -65,29 +82,19 @@ final class CarsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupSubviews()
+        title = Translation.Car.List.title
+        setupSubviewsHierarchy()
+
+        interactor.viewState = state
     }
 
-    private func setupSubviews() {
-        title = Translation.Car.List.title
-        
+    private func setupSubviewsHierarchy() {
         tableView.pin(in: view)
-        tableView.register(cellType: CarViewCell.self)
-        tableView.estimatedRowHeight = Constants.estimatedRowHeight
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.dataSource = self
-        tableView.tableFooterView = UIView()
-        tableView.separatorStyle = .none
-
-        tableView.refreshControl = refreshControl
-
-        refreshControl.addTarget(self, action: #selector(onPullToRefresh), for: .valueChanged)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        interactor.viewState = state
         setupStateObserving()
     }
 
@@ -96,11 +103,11 @@ final class CarsViewController: UIViewController {
             isRefreshing ? self?.refreshControl.beginRefreshing() : self?.refreshControl.endRefreshing()
         })
         observingTokens.append(state.shouldDisplayRefreshError.subscribe { [weak self] shouldDisplayRefreshError in
-            if shouldDisplayRefreshError {
-                self?.displayRefreshError()
-            }
+            if shouldDisplayRefreshError { self?.displayRefreshError() }
         })
-        observingTokens.append(state.cars.subscribe { [weak self] _ in self?.tableView.reloadData() })
+        observingTokens.append(state.cars.subscribe { [weak self] _ in
+            self?.tableView.reloadData()
+        })
     }
 
     private func displayRefreshError() {
@@ -136,5 +143,14 @@ extension CarsViewController: UITableViewDataSource {
         cell.selectionStyle = .none
         
         return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension CarsViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.interactor.onSelectCar(at: indexPath.unsignedRow)
     }
 }

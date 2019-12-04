@@ -151,6 +151,19 @@ extension UIView {
             superview.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
         }
     }
+
+    public func pin(in scrollView: UIScrollView) {
+        guard let superview = scrollView.superview else {
+            fatalError("Could not pin edges, the scroolView has no superview.")
+        }
+
+        pin(in: scrollView as UIView)
+
+        widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: 1).activate()
+        let contentViewHeightConstraint = heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: 1)
+        contentViewHeightConstraint.priority = .defaultLow
+        contentViewHeightConstraint.isActive = true
+    }
 }
 
 // MARK: - Relative placement
@@ -158,36 +171,36 @@ extension UIView {
 extension UIView {
 
     @discardableResult
-    public func putOnTop(of view: UIView, margin: CGFloat, alignHorizontally: Bool = false) -> NSLayoutConstraint {
-        if alignHorizontally {
-            self.alignHorizontally(with: view, margin: margin)
+    public func putOnTop(of view: UIView, margin: CGFloat = 0, alignHorizontalEdges: Bool = false) -> NSLayoutConstraint {
+        if alignHorizontalEdges {
+            self.alignHorizontalEdges(with: view, margin: margin)
         }
 
         return bottomAnchor.constraint(equalTo: view.topAnchor, constant: margin).activate()
     }
 
     @discardableResult
-    public func putOnBottom(of view: UIView, margin: CGFloat, alignHorizontally: Bool = false) -> NSLayoutConstraint {
-        if alignHorizontally {
-            self.alignHorizontally(with: view, margin: margin)
+    public func putOnBottom(of view: UIView, margin: CGFloat = 0, alignHorizontalEdges: Bool = false) -> NSLayoutConstraint {
+        if alignHorizontalEdges {
+            self.alignHorizontalEdges(with: view, margin: margin)
         }
 
         return topAnchor.constraint(equalTo: view.bottomAnchor, constant: margin).activate()
     }
 
     @discardableResult
-    public func putOnLeading(of view: UIView, margin: CGFloat, alignVertically: Bool = false) -> NSLayoutConstraint {
-        if alignVertically {
-            self.alignVertically(with: view, margin: margin)
+    public func putOnLeading(of view: UIView, margin: CGFloat = 0, alignVerticalEdges: Bool = false) -> NSLayoutConstraint {
+        if alignVerticalEdges {
+            self.alignVerticalEdges(with: view, margin: margin)
         }
 
         return trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: margin).activate()
     }
 
     @discardableResult
-    public func putOnTrailing(of view: UIView, margin: CGFloat, alignVertically: Bool = false) -> NSLayoutConstraint {
-        if alignVertically {
-            self.alignVertically(with: view, margin: margin)
+    public func putOnTrailing(of view: UIView, margin: CGFloat = 0, alignVerticalEdges: Bool = false) -> NSLayoutConstraint {
+        if alignVerticalEdges {
+            self.alignVerticalEdges(with: view, margin: margin)
         }
 
         return leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: margin).activate()
@@ -207,6 +220,11 @@ extension UIView {
     public func constraintHeight(to height: CGFloat) -> NSLayoutConstraint {
         return heightAnchor.constraint(equalToConstant: height).activate()
     }
+
+    public func constraintSize(to size: CGFloat) {
+        constraintWidth(to: size)
+        heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).activate()
+    }
 }
 
 // MARK: - Alignment
@@ -214,33 +232,43 @@ extension UIView {
 extension UIView {
 
     @discardableResult
-    public func alignWithTop(of view: UIView, margin: CGFloat) -> NSLayoutConstraint {
+    public func alignWithTop(of view: UIView, margin: CGFloat = 0) -> NSLayoutConstraint {
         return topAnchor.constraint(equalTo: view.topAnchor, constant: margin).activate()
     }
 
     @discardableResult
-    public func alignWithBottom(of view: UIView, margin: CGFloat) -> NSLayoutConstraint {
+    public func alignWithBottom(of view: UIView, margin: CGFloat = 0) -> NSLayoutConstraint {
         return bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: margin).activate()
     }
 
-    public func alignVertically(with view: UIView, margin: CGFloat) {
+    public func alignVerticalEdges(with view: UIView, margin: CGFloat = 0) {
         alignWithTop(of: view, margin: margin)
         alignWithBottom(of: view, margin: margin)
     }
 
     @discardableResult
-    public func alignWithLeading(of view: UIView, margin: CGFloat) -> NSLayoutConstraint {
+    public func alignWithLeading(of view: UIView, margin: CGFloat = 0) -> NSLayoutConstraint {
         return leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: margin).activate()
     }
 
     @discardableResult
-    public func alignWithTrailing(of view: UIView, margin: CGFloat) -> NSLayoutConstraint {
+    public func alignWithTrailing(of view: UIView, margin: CGFloat = 0) -> NSLayoutConstraint {
         return trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: margin).activate()
     }
 
-    public func alignHorizontally(with view: UIView, margin: CGFloat) {
+    public func alignHorizontalEdges(with view: UIView, margin: CGFloat = 0) {
         alignWithLeading(of: view, margin: margin)
         alignWithTrailing(of: view, margin: margin)
+    }
+
+    @discardableResult
+    public func alignHorizontally(with view: UIView, margin: CGFloat = 0) -> NSLayoutConstraint {
+        return centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: margin).activate()
+    }
+
+    @discardableResult
+    public func alignVertically(with view: UIView, margin: CGFloat = 0) -> NSLayoutConstraint {
+        return centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: margin).activate()
     }
 }
 
@@ -252,19 +280,36 @@ extension UIView {
         guard let superview = superview else {
             fatalError("Could not center, the view has no superview.")
         }
+
         translatesAutoresizingMaskIntoConstraints = false
+        
         centerXAnchor.constraint(equalTo: superview.centerXAnchor).activate()
         centerYAnchor.constraint(equalTo: superview.centerYAnchor).activate()
     }
 
     public func center(in view: UIView) {
+        translatesAutoresizingMaskIntoConstraints = false
+
         view.addSubview(self)
 
         centerInSuperview()
     }
 
-    public func alignCenter(with view: UIView) {
-        centerXAnchor.constraint(equalTo: view.centerXAnchor).activate()
-        centerYAnchor.constraint(equalTo: view.centerYAnchor).activate()
+    @discardableResult
+    public func centerHorizontally(in view: UIView) -> NSLayoutConstraint {
+        translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(self)
+
+        return alignHorizontally(with: view)
+    }
+
+    @discardableResult
+    public func centerVertically(in view: UIView) -> NSLayoutConstraint {
+        translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(self)
+
+        return alignVertically(with: view)
     }
 }

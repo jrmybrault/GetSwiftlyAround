@@ -12,6 +12,9 @@ import UIKitUtils
 enum LayoutConstants {
 
     static let defaultMargin: CGFloat = 8
+    static let largeMargin: CGFloat = 16
+    static let veryLargeMargin: CGFloat = 32
+
     static let defaultPadding: CGFloat = 8
 
     static let minimumFontScale: CGFloat = 0.75

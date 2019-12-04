@@ -1,5 +1,5 @@
 //
-//  GetCarPhotoWebService.swift
+//  GetPhotoWebService.swift
 //  Backend
 //
 //  Created by JBR on 02/12/2019.
@@ -9,7 +9,7 @@
 import Domain
 import FoundationUtils
 
-public final class GetCarPhotoWebService: WebService, CarPhotoRemoteProvider {
+public final class GetPhotoWebService: WebService, PhotoRemoteProvider {
 
     public struct FetchError: Error { }
 

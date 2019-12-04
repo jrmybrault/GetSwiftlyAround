@@ -10,10 +10,11 @@ import Foundation
 
 public struct Car: Equatable, Decodable {
 
-    public struct Rating: Equatable, Decodable {
+    public struct Owner: Equatable, Decodable {
 
-        public let average: Float
-        public let count: UInt
+        public let name: String
+        public let pictureUrl: String
+        public let rating: Rating
     }
 
     // MARK: - Properties
@@ -26,4 +27,14 @@ public struct Car: Equatable, Decodable {
     public let pricePerDay: UInt
 
     public let rating: Rating
+
+    public let owner: Owner
+
+    public var ownerPictureUrl: String {
+        return owner.pictureUrl
+    }
+
+    public var ownerRating: Rating {
+        return owner.rating
+    }
 }

@@ -76,7 +76,6 @@
 		6D32E9F62395A67700E56067 /* Car.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D32E9F82395A67700E56067 /* Car.strings */; };
 		6D32E9FE2395A84000E56067 /* CarsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D32E9FD2395A84000E56067 /* CarsProvider.swift */; };
 		6D32EA302395AC4100E56067 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D32EA2F2395AC4100E56067 /* Translation.swift */; };
-		6D32EA382395AC7100E56067 /* UIView+Visibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D32EA332395AC7100E56067 /* UIView+Visibility.swift */; };
 		6D32EA392395AC7100E56067 /* UIStackView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D32EA342395AC7100E56067 /* UIStackView+Utils.swift */; };
 		6D32EA3A2395AC7100E56067 /* NSLayoutConstraint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D32EA352395AC7100E56067 /* NSLayoutConstraint+Utils.swift */; };
 		6D32EA3B2395AC7100E56067 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D32EA362395AC7100E56067 /* UIView+Constraints.swift */; };
@@ -99,14 +98,19 @@
 		6D32EA612395B25D00E56067 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D32E95E23959F4700E56067 /* Domain.framework */; };
 		6D32EA642395BB7000E56067 /* LayoutConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D32EA632395BB7000E56067 /* LayoutConstants.swift */; };
 		6D32EA672395BC5A00E56067 /* UILabel+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D32EA652395BC5A00E56067 /* UILabel+Styling.swift */; };
-		6D32EA682395BC5A00E56067 /* UIFont+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D32EA662395BC5A00E56067 /* UIFont+Styling.swift */; };
-		6D32EA6A2395BDB500E56067 /* CarPhotoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D32EA692395BDB500E56067 /* CarPhotoProvider.swift */; };
-		6D32EA6C2395BDFE00E56067 /* CarPhotoRemoteProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D32EA6B2395BDFE00E56067 /* CarPhotoRemoteProvider.swift */; };
-		6D32EA6E2395BE3700E56067 /* GetCarPhotoWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D32EA6D2395BE3700E56067 /* GetCarPhotoWebService.swift */; };
+		6D32EA6A2395BDB500E56067 /* PhotoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D32EA692395BDB500E56067 /* PhotoProvider.swift */; };
+		6D32EA6C2395BDFE00E56067 /* PhotoRemoteProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D32EA6B2395BDFE00E56067 /* PhotoRemoteProvider.swift */; };
+		6D32EA6E2395BE3700E56067 /* GetPhotoWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D32EA6D2395BE3700E56067 /* GetPhotoWebService.swift */; };
 		6D32EA702395C3F600E56067 /* PhotoProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D32EA6F2395C3F600E56067 /* PhotoProviderFactory.swift */; };
 		6D32EA722396447100E56067 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D32EA712396447100E56067 /* Colors.xcassets */; };
 		6D32EA742396460300E56067 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D32EA732396460300E56067 /* Asset.swift */; };
 		6D32EA772396531400E56067 /* Common.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D32EA792396531400E56067 /* Common.strings */; };
+		6D4242822396DD8A0018F516 /* CarDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4242812396DD8A0018F516 /* CarDetailsViewController.swift */; };
+		6D4242862396F9F00018F516 /* DisplayableCarDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4242852396F9F00018F516 /* DisplayableCarDetails.swift */; };
+		6D4242882397003B0018F516 /* UIView+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4242872397003B0018F516 /* UIView+Styling.swift */; };
+		6D42428A2397009E0018F516 /* UIView+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4242892397009E0018F516 /* UIView+Frame.swift */; };
+		6D42428E239712700018F516 /* Rating+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D42428D239712700018F516 /* Rating+UI.swift */; };
+		6D424290239797E10018F516 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D42428F239797E10018F516 /* Rating.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -259,7 +263,6 @@
 		6D32EA1A2395A9D300E56067 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		6D32EA1B2395A9D300E56067 /* HTTPCallerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPCallerFactory.swift; sourceTree = "<group>"; };
 		6D32EA2F2395AC4100E56067 /* Translation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
-		6D32EA332395AC7100E56067 /* UIView+Visibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Visibility.swift"; sourceTree = "<group>"; };
 		6D32EA342395AC7100E56067 /* UIStackView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Utils.swift"; sourceTree = "<group>"; };
 		6D32EA352395AC7100E56067 /* NSLayoutConstraint+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Utils.swift"; sourceTree = "<group>"; };
 		6D32EA362395AC7100E56067 /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
@@ -275,14 +278,19 @@
 		6D32EA622395B34D00E56067 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		6D32EA632395BB7000E56067 /* LayoutConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutConstants.swift; sourceTree = "<group>"; };
 		6D32EA652395BC5A00E56067 /* UILabel+Styling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Styling.swift"; sourceTree = "<group>"; };
-		6D32EA662395BC5A00E56067 /* UIFont+Styling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Styling.swift"; sourceTree = "<group>"; };
-		6D32EA692395BDB500E56067 /* CarPhotoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPhotoProvider.swift; sourceTree = "<group>"; };
-		6D32EA6B2395BDFE00E56067 /* CarPhotoRemoteProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPhotoRemoteProvider.swift; sourceTree = "<group>"; };
-		6D32EA6D2395BE3700E56067 /* GetCarPhotoWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCarPhotoWebService.swift; sourceTree = "<group>"; };
+		6D32EA692395BDB500E56067 /* PhotoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoProvider.swift; sourceTree = "<group>"; };
+		6D32EA6B2395BDFE00E56067 /* PhotoRemoteProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRemoteProvider.swift; sourceTree = "<group>"; };
+		6D32EA6D2395BE3700E56067 /* GetPhotoWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotoWebService.swift; sourceTree = "<group>"; };
 		6D32EA6F2395C3F600E56067 /* PhotoProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoProviderFactory.swift; sourceTree = "<group>"; };
 		6D32EA712396447100E56067 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		6D32EA732396460300E56067 /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		6D32EA782396531400E56067 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Common.strings; sourceTree = "<group>"; };
+		6D4242812396DD8A0018F516 /* CarDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailsViewController.swift; sourceTree = "<group>"; };
+		6D4242852396F9F00018F516 /* DisplayableCarDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayableCarDetails.swift; sourceTree = "<group>"; };
+		6D4242872397003B0018F516 /* UIView+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Styling.swift"; sourceTree = "<group>"; };
+		6D4242892397009E0018F516 /* UIView+Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Frame.swift"; sourceTree = "<group>"; };
+		6D42428D239712700018F516 /* Rating+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rating+UI.swift"; sourceTree = "<group>"; };
+		6D42428F239797E10018F516 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		B1D72A5F85D02904457C31EE /* Pods-GetAround.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAround.debug.xcconfig"; path = "Target Support Files/Pods-GetAround/Pods-GetAround.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -426,8 +434,8 @@
 				6D32E9DF2395A24100E56067 /* ImageFormat.swift */,
 				6D32E9DC2395A24100E56067 /* MimeType.swift */,
 				6D32E9DD2395A24100E56067 /* Percentage.swift */,
-				6D32E9E42395A28100E56067 /* Log */,
 				6D32E9842395A15900E56067 /* HTTP */,
+				6D32E9E42395A28100E56067 /* Log */,
 				6D32E9D32395A1CE00E56067 /* Observing */,
 				6D32E9BA2395A1C100E56067 /* Utils */,
 			);
@@ -478,9 +486,9 @@
 		6D32E97B23959F4D00E56067 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				6D32E97E23959F6900E56067 /* SPI */,
 				6D32E97D23959F6500E56067 /* API */,
 				6D32E97C23959F6100E56067 /* Model */,
+				6D32E97E23959F6900E56067 /* SPI */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -489,6 +497,7 @@
 			isa = PBXGroup;
 			children = (
 				6D32E97F23959F7200E56067 /* Car.swift */,
+				6D42428F239797E10018F516 /* Rating.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -496,8 +505,8 @@
 		6D32E97D23959F6500E56067 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				6D32EA692395BDB500E56067 /* CarPhotoProvider.swift */,
 				6D32E9FD2395A84000E56067 /* CarsProvider.swift */,
+				6D32EA692395BDB500E56067 /* PhotoProvider.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -505,8 +514,8 @@
 		6D32E97E23959F6900E56067 /* SPI */ = {
 			isa = PBXGroup;
 			children = (
-				6D32EA6B2395BDFE00E56067 /* CarPhotoRemoteProvider.swift */,
 				6D32E9812395A0F800E56067 /* CarsRemoteProvider.swift */,
+				6D32EA6B2395BDFE00E56067 /* PhotoRemoteProvider.swift */,
 			);
 			path = SPI;
 			sourceTree = "<group>";
@@ -528,8 +537,8 @@
 		6D32E9862395A15900E56067 /* Interceptors */ = {
 			isa = PBXGroup;
 			children = (
-				6D32E9872395A15900E56067 /* Result */,
 				6D32E98C2395A15900E56067 /* Request */,
+				6D32E9872395A15900E56067 /* Result */,
 			);
 			path = Interceptors;
 			sourceTree = "<group>";
@@ -569,12 +578,12 @@
 		6D32E9982395A15900E56067 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				6D32E9992395A15900E56067 /* HTTPRequest.swift */,
-				6D32E99A2395A15900E56067 /* HTTPMethod.swift */,
-				6D32E99B2395A15900E56067 /* HTTPHeader.swift */,
-				6D32E99C2395A15900E56067 /* HTTPScheme.swift */,
-				6D32E99D2395A15900E56067 /* HTTPBodyParameter.swift */,
 				6D32E99E2395A15900E56067 /* HTTPAPI.swift */,
+				6D32E99D2395A15900E56067 /* HTTPBodyParameter.swift */,
+				6D32E99B2395A15900E56067 /* HTTPHeader.swift */,
+				6D32E99A2395A15900E56067 /* HTTPMethod.swift */,
+				6D32E9992395A15900E56067 /* HTTPRequest.swift */,
+				6D32E99C2395A15900E56067 /* HTTPScheme.swift */,
 				6D32E99F2395A15900E56067 /* UploadableMedia.swift */,
 			);
 			path = Request;
@@ -640,8 +649,9 @@
 		6D32E9ED2395A36100E56067 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				6D32E9F02395A46100E56067 /* Common */,
+				6D4242802396DD6E0018F516 /* CarDetails */,
 				6D32E9EC2395A35C00E56067 /* CarsList */,
+				6D32E9F02395A46100E56067 /* Common */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -651,9 +661,9 @@
 			children = (
 				6D32E9F12395A46D00E56067 /* Car+UI.swift */,
 				6D32EA632395BB7000E56067 /* LayoutConstants.swift */,
-				6D32EA662395BC5A00E56067 /* UIFont+Styling.swift */,
-				6D32EA652395BC5A00E56067 /* UILabel+Styling.swift */,
 				6D32EA6F2395C3F600E56067 /* PhotoProviderFactory.swift */,
+				6D42428D239712700018F516 /* Rating+UI.swift */,
+				6D32EA652395BC5A00E56067 /* UILabel+Styling.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -693,7 +703,7 @@
 			isa = PBXGroup;
 			children = (
 				6D32EA022395A94300E56067 /* GetCarsWebService.swift */,
-				6D32EA6D2395BE3700E56067 /* GetCarPhotoWebService.swift */,
+				6D32EA6D2395BE3700E56067 /* GetPhotoWebService.swift */,
 			);
 			path = DomainAdatper;
 			sourceTree = "<group>";
@@ -704,7 +714,8 @@
 				6D32EA352395AC7100E56067 /* NSLayoutConstraint+Utils.swift */,
 				6D32EA342395AC7100E56067 /* UIStackView+Utils.swift */,
 				6D32EA362395AC7100E56067 /* UIView+Constraints.swift */,
-				6D32EA332395AC7100E56067 /* UIView+Visibility.swift */,
+				6D4242892397009E0018F516 /* UIView+Frame.swift */,
+				6D4242872397003B0018F516 /* UIView+Styling.swift */,
 				6D32EA372395AC7100E56067 /* UIViewController+Containment.swift */,
 			);
 			path = Utils;
@@ -737,6 +748,15 @@
 				6D32E9F82395A67700E56067 /* Car.strings */,
 			);
 			path = Translations;
+			sourceTree = "<group>";
+		};
+		6D4242802396DD6E0018F516 /* CarDetails */ = {
+			isa = PBXGroup;
+			children = (
+				6D4242812396DD8A0018F516 /* CarDetailsViewController.swift */,
+				6D4242852396F9F00018F516 /* DisplayableCarDetails.swift */,
+			);
+			path = CarDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1114,11 +1134,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D32E9EB2395A33F00E56067 /* CarsViewInteractor.swift in Sources */,
-				6D32EA682395BC5A00E56067 /* UIFont+Styling.swift in Sources */,
 				6D32E94723959F0F00E56067 /* CarsViewController.swift in Sources */,
 				6D32EA702395C3F600E56067 /* PhotoProviderFactory.swift in Sources */,
+				6D4242862396F9F00018F516 /* DisplayableCarDetails.swift in Sources */,
 				6D32EA452395AEE100E56067 /* Coordinator.swift in Sources */,
 				6D32EA642395BB7000E56067 /* LayoutConstants.swift in Sources */,
+				6D4242822396DD8A0018F516 /* CarDetailsViewController.swift in Sources */,
 				6D32EA742396460300E56067 /* Asset.swift in Sources */,
 				6D32EA402395AE7500E56067 /* Plist.swift in Sources */,
 				6D32E9F22395A46D00E56067 /* Car+UI.swift in Sources */,
@@ -1127,6 +1148,7 @@
 				6D32EA432395AEB500E56067 /* AppCoordinator.swift in Sources */,
 				6D32EA472395AEF700E56067 /* CarsFlowCoordinator.swift in Sources */,
 				6D32E90023959D6900E56067 /* AppDelegate.swift in Sources */,
+				6D42428E239712700018F516 /* Rating+UI.swift in Sources */,
 				6D32EA672395BC5A00E56067 /* UILabel+Styling.swift in Sources */,
 				6D32EA302395AC4100E56067 /* Translation.swift in Sources */,
 			);
@@ -1195,9 +1217,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D32EA382395AC7100E56067 /* UIView+Visibility.swift in Sources */,
 				6D32EA392395AC7100E56067 /* UIStackView+Utils.swift in Sources */,
 				6D32EA3A2395AC7100E56067 /* NSLayoutConstraint+Utils.swift in Sources */,
+				6D4242882397003B0018F516 /* UIView+Styling.swift in Sources */,
+				6D42428A2397009E0018F516 /* UIView+Frame.swift in Sources */,
 				6D32EA3B2395AC7100E56067 /* UIView+Constraints.swift in Sources */,
 				6D32EA3C2395AC7100E56067 /* UIViewController+Containment.swift in Sources */,
 			);
@@ -1207,8 +1230,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D32EA6C2395BDFE00E56067 /* CarPhotoRemoteProvider.swift in Sources */,
-				6D32EA6A2395BDB500E56067 /* CarPhotoProvider.swift in Sources */,
+				6D424290239797E10018F516 /* Rating.swift in Sources */,
+				6D32EA6C2395BDFE00E56067 /* PhotoRemoteProvider.swift in Sources */,
+				6D32EA6A2395BDB500E56067 /* PhotoProvider.swift in Sources */,
 				6D32E98023959F7200E56067 /* Car.swift in Sources */,
 				6D32E9822395A0F800E56067 /* CarsRemoteProvider.swift in Sources */,
 				6D32E9FE2395A84000E56067 /* CarsProvider.swift in Sources */,
@@ -1229,7 +1253,7 @@
 				6D32EA5C2395B1E700E56067 /* MockRequestLauncher.swift in Sources */,
 				6D32EA5D2395B1E700E56067 /* Resource.swift in Sources */,
 				6D32EA5F2395B1EB00E56067 /* GetCarsWebService.swift in Sources */,
-				6D32EA6E2395BE3700E56067 /* GetCarPhotoWebService.swift in Sources */,
+				6D32EA6E2395BE3700E56067 /* GetPhotoWebService.swift in Sources */,
 				6D32EA5A2395B1E700E56067 /* BackendConfiguration.swift in Sources */,
 				6D32EA5E2395B1E700E56067 /* WebService.swift in Sources */,
 				6D32EA5B2395B1E700E56067 /* HTTPCallerFactory.swift in Sources */,

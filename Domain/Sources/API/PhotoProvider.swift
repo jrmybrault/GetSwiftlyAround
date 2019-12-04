@@ -1,5 +1,5 @@
 //
-//  CarPhotoProvider.swift
+//  PhotoProvider.swift
 //  Domain
 //
 //  Created by JBR on 02/12/2019.
@@ -9,7 +9,7 @@
 import FoundationUtils
 import UIKitUtils
 
-public final class CarPhotoProvider {
+public final class PhotoProvider {
 
     public enum RefreshState {
 
@@ -20,19 +20,13 @@ public final class CarPhotoProvider {
 
     public struct RefreshError: Error { }
 
-    // MARK: - Properties
-
-   // public var onLoadingStateChange: Consumer<RefreshState>?
-
-   // private var fetchTask: CancellableTask?
-
     // MARK: - Dependencies
 
-    private let remoteProvider: CarPhotoRemoteProvider
+    private let remoteProvider: PhotoRemoteProvider
 
     // MARK: - Init
 
-    public init(remoteProvider: CarPhotoRemoteProvider) {
+    public init(remoteProvider: PhotoRemoteProvider) {
         self.remoteProvider = remoteProvider
     }
 

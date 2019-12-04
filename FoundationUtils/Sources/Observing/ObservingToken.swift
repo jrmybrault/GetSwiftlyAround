@@ -14,7 +14,7 @@ public class ObservingToken: Equatable, Hashable {
 
     private let key = UUID().uuidString
 
-    private unowned var disposable: DisposableObservable?
+    private weak var disposable: DisposableObservable?
 
     // MARK: - Init
 

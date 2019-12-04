@@ -1,5 +1,5 @@
 //
-//  CarPhotoRemoteProvider.swift
+//  PhotoRemoteProvider.swift
 //  Domain
 //
 //  Created by JBR on 02/12/2019.
@@ -8,7 +8,7 @@
 
 import FoundationUtils
 
-public protocol CarPhotoRemoteProvider {
+public protocol PhotoRemoteProvider {
 
     func fetch(photoAt url: URL, _ onResult: @escaping Consumer<Result<UIImage, Error>>) -> CancellableTask
 }

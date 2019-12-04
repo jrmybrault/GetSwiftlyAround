@@ -9,9 +9,59 @@ import Foundation
 public enum Translation {
 public enum Car {
 
+    public enum Default {
+
+      public enum Rating {
+        ///  %@ (%u ratings)
+        public static func format(_ p1: String, _ p2: Int) -> String {
+          return Translation.of(key: "default.rating.format", in: "Car", args: p1, p2)
+        }
+      }
+    }
+
+    public enum Details {
+      /// About the owner
+      public static let owner = Translation.of(key: "details.owner", in: "Car")
+
+      public enum Car {
+
+        public enum Rating {
+
+          public enum Format {
+            /// %@ ★
+            public static func part1(_ p1: String) -> String {
+              return Translation.of(key: "details.car.rating.format.part1", in: "Car", args: p1)
+            }
+            ///  out of %d
+            public static func part2(_ p1: Int) -> String {
+              return Translation.of(key: "details.car.rating.format.part2", in: "Car", args: p1)
+            }
+            /// \n%u ratings
+            public static func part3(_ p1: Int) -> String {
+              return Translation.of(key: "details.car.rating.format.part3", in: "Car", args: p1)
+            }
+          }
+        }
+      }
+
+      public enum Pricing {
+        /// %@\nper day
+        public static func format(_ p1: String) -> String {
+          return Translation.of(key: "details.pricing.format", in: "Car", args: p1)
+        }
+      }
+    }
+
     public enum List {
       /// Available cars
       public static let title = Translation.of(key: "list.title", in: "Car")
+
+      public enum Pricing {
+        /// %@ / day
+        public static func format(_ p1: String) -> String {
+          return Translation.of(key: "list.pricing.format", in: "Car", args: p1)
+        }
+      }
 
       public enum RefreshError {
         /// Failed to refresh cars list. Please check your internet connexion.
@@ -22,19 +72,11 @@ public enum Car {
     }
 
     public enum Pricing {
-      /// %@ / day
-      public static func format(_ p1: String) -> String {
-        return Translation.of(key: "pricing.format", in: "Car", args: p1)
-      }
       /// Unknown price
       public static let unknown = Translation.of(key: "pricing.unknown", in: "Car")
     }
 
     public enum Rating {
-      /// %@ (%u reviewers)
-      public static func format(_ p1: String, _ p2: Int) -> String {
-        return Translation.of(key: "rating.format", in: "Car", args: p1, p2)
-      }
       /// No rating yet
       public static let `none` = Translation.of(key: "rating.none", in: "Car")
     }
